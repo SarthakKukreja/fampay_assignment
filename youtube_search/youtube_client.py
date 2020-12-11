@@ -8,7 +8,7 @@ class YouTubeClient:
     YOUTUBE_API_KEY = 'AIzaSyD-bktHaiANj-1kuP4qrdhASwZUDeXf93s'
     SEARCH_STRING = 'Playstation 5'
 
-    def fetch_from_youtube(self):    
+    def fetch_from_youtube(self , publishedAfter=None):    
 
         youtube = build('youtube', 'v3', developerKey=self.YOUTUBE_API_KEY)
         nextPageToken = None
@@ -21,6 +21,7 @@ class YouTubeClient:
                 type="video",
                 pageToken=nextPageToken,
                 maxResults=100,
+                publishedAfter=publishedAfter,
             )
             
             response = request.execute()
