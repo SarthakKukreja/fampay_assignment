@@ -15,5 +15,6 @@ class Video(models.Model):
     class Meta:
         ordering = ('date_published',)
 
-class LatestDateTime(models.Model):
-    date_time = models.DateTimeField()
+class VariableStorage(models.Model):
+    key = models.CharField(max_length=20)
+    value = models.CharField(max_length=20)
