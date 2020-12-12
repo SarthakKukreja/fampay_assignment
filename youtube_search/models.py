@@ -1,7 +1,5 @@
 from django.db import models
 
-# Create your models here.
-
 class Video(models.Model):
     title = models.CharField(max_length=100)
     description = models.TextField(null=True)
@@ -12,9 +10,11 @@ class Video(models.Model):
     def __str__(self):
         return self.title
 
+    # Order data in descending order of published datetime and returns data in that order.
     class Meta:
         ordering = ('date_published',)
 
+# Used to keep track of last time the database has been updated.
 class VariableStorage(models.Model):
     key = models.CharField(max_length=20)
     value = models.CharField(max_length=20)
